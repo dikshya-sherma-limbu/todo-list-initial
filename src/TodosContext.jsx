@@ -11,6 +11,7 @@ export default function TodosProvider({ children }) {
   const [data, setData] = useState([]);
   const [todos, dispatch] = useReducer(TodosReducer, data);
   const [modelIsActive, setModelIsActive] = useState(false);
+  const [filterBy, setFilterBy] = useState("");
   useEffect(() => {
     fetch("https://dummyjson.com/todos/random/5")
       .then((res) =>
@@ -28,7 +29,14 @@ export default function TodosProvider({ children }) {
     <>
       <main>
         <TodosContext.Provider
-          value={{ todos, modelIsActive, setModelIsActive, dispatch }}
+          value={{
+            todos,
+            modelIsActive,
+            setModelIsActive,
+            dispatch,
+            filterBy,
+            setFilterBy,
+          }}
         >
           {children}
         </TodosContext.Provider>
