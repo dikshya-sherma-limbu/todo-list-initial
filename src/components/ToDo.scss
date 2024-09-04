@@ -19,7 +19,20 @@
   &.done :is(h3, p) {
     text-decoration: line-through;
   }
-
+  .back-btn {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white-color);
+    color: var(--black-color);
+    padding: 25px;
+    border-radius: 12px;
+    position: relative;
+    -webkit-box-shadow: -2px 3px 29px -10px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: -2px 3px 29px -10px rgba(0, 0, 0, 0.6);
+    box-shadow: -2px 3px 29px -10px rgba(0, 0, 0, 0.6);
+    max-width: 650px;
+    margin-bottom: 20px;
+  }
   button.erase {
     background-color: transparent;
     position: absolute;

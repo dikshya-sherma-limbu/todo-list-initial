@@ -1,5 +1,4 @@
 import "./Header.scss";
-import TodosList from "../components/TodosList.jsx";
 import { useTodos } from "../TodosContext.jsx";
 function Header({ appName }) {
   const store = useTodos();
