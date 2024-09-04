@@ -9,9 +9,12 @@ function TodosList() {
   return (
     <>
       <div className="todos">
-        {store.filterTodos().map((todo) => (
-          <Todo todo={todo} key={todo.id} />
-        ))}
+        {store
+          .filterTodos()
+          .reverse()
+          .map((todo) => (
+            <Todo todo={todo} key={todo.id} />
+          ))}
       </div>
     </>
   );

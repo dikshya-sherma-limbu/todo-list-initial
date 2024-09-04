@@ -2,10 +2,12 @@ import { useState } from "react";
 import { useTodos } from "../../TodosContext";
 function AddTodoModel() {
   const store = useTodos();
+  const { todos } = useTodos();
   //initialize use state
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   // Generate a random integer for the id
+
   const id = Math.floor(Math.random() * 100); // Generates a random number between 0 and 100
 
   //update state on input change
@@ -22,7 +24,7 @@ function AddTodoModel() {
       completed: false,
       id: id,
     };
-    console.log("new task: " + newTodo.userId);
+    console.log("new task: ");
     if (newTodo.userId && newTodo.todo) {
       //add the task
       store.dispatch({ type: "added", newTodo });

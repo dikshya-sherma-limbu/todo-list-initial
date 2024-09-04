@@ -24,11 +24,13 @@ export default function TodosProvider({ children }) {
     }
   }
   useEffect(() => {
-    fetch("https://dummyjson.com/todos/random/5")
+    fetch("https://dummyjson.com/todos?limit=7&skip=0")
       .then((res) =>
-        res.json().then((data) => {
-          // // Dispatch an action to update the state with the fetched data
+        res.json().then((list) => {
+          //sorted the list again because the fetched data return contains the todos in a nested structure, rather than an array directly.
+          const data = list.todos;
           setData(data);
+          // // Dispatch an action to update the state with the fetched data
           dispatch({ type: "setTodos", payload: data });
           // Log the fetched data to the console
           console.log("data: ", data);
@@ -65,7 +67,8 @@ function TodosReducer(todos, action) {
       return action.payload;
     }
     case "added": {
-      return [...todos, action.newTodo];
+      //added new item on top first and then the old time using spread operator.
+      return [action.newTodo, ...todos];
     }
     case "deleted": {
       //this filters the list removing the list with the given id in props.
