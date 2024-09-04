@@ -12,6 +12,17 @@ export default function TodosProvider({ children }) {
   const [todos, dispatch] = useReducer(TodosReducer, data);
   const [modelIsActive, setModelIsActive] = useState(false);
   const [filterBy, setFilterBy] = useState("");
+
+  function filterTodos() {
+    switch (filterBy) {
+      case "todo":
+        return todos.filter((todo) => !todo.completed);
+      case "done":
+        return todos.filter((todo) => todo.completed);
+      default:
+        return todos;
+    }
+  }
   useEffect(() => {
     fetch("https://dummyjson.com/todos/random/5")
       .then((res) =>
@@ -36,6 +47,7 @@ export default function TodosProvider({ children }) {
             dispatch,
             filterBy,
             setFilterBy,
+            filterTodos,
           }}
         >
           {children}
