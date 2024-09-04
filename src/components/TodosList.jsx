@@ -5,22 +5,6 @@ import { useContext } from "react";
 
 function TodosList() {
   const store = useTodos();
-
-  // function deleteHandler(id) {
-  //   if (confirm("Are you sure you want to delete the to-do?")) {
-  //     store.dispatch({
-  //       type: "deleted",
-  //       id: id,
-  //     });
-  //   }
-  // }
-  // function toggleIsDoneHandler(id) {
-  //   store.setTodos({
-  //     type: "toggledIsDone",
-  //     id: id,
-  //   });
-  // console.log("toggle");
-  // }
   console.log("store " + store.todo);
   return (
     <>

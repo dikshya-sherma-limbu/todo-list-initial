@@ -36,6 +36,13 @@ export default function TodosProvider({ children }) {
       )
       .catch((error) => console.error("Error fetching todos:", error));
   }, []); // Empty dependency array to run only once on mount
+
+  //adding all the data in local storage
+  //i used 'todos' here instead of 'data' because that it is just the fetched data without any state changes.
+  // here updating the local storage whenever the `todos` state changes
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]); //with this second argument, new todo will be added in local storage whenever the  add state occurs
   return (
     <>
       <main>
